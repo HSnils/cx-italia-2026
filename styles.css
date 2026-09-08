@@ -23,7 +23,10 @@ html {
 body {
   font-family:
     "Arial Narrow", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  background-color: var(--cx-charcoal);
+  /* Transparent so the fixed image + overlay pseudo-elements (which sit
+     at negative z-index, behind the body) remain visible. An opaque body
+     background would paint over them. */
+  background: transparent;
   min-height: 100vh;
   color: var(--cx-ink);
   line-height: 1.6;
