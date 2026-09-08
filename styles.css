@@ -1,0 +1,295 @@
+:root {
+  --cx-red-dark: #6e1414;
+  --cx-red: #a01f1f;
+  --cx-red-bright: #c0392b;
+  --cx-gold: #f2b73a;
+  --cx-charcoal: #1a1a1a;
+  --cx-charcoal-2: #2b2b2b;
+  --cx-ink: #e8e8e8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    "Arial Narrow", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--cx-charcoal);
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: var(--cx-ink);
+  line-height: 1.6;
+}
+
+/* Black & white imagery with a dark, metallic overlay - the Camel Extreme vibe */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  filter: grayscale(100%) contrast(1.1);
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75));
+  z-index: -1;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  text-align: center;
+  padding: 24px 20px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cx-gold);
+  text-shadow:
+    0 0 2px var(--cx-red-dark),
+    2px 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+header h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--cx-ink);
+}
+
+.program {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.day {
+  background: rgba(26, 26, 26, 0.72);
+  border: 1px solid rgba(192, 57, 43, 0.35);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.day h2 {
+  color: var(--cx-gold);
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--cx-red) 0%, var(--cx-red-dark) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  font-weight: 800;
+}
+
+.schedule {
+  list-style: none;
+}
+
+.schedule li {
+  padding: 12px 4px;
+  color: var(--cx-ink);
+  font-size: 1.05rem;
+  border-bottom: 1px solid rgba(192, 57, 43, 0.25);
+}
+
+.schedule li:last-child {
+  border-bottom: none;
+}
+
+.schedule li.note {
+  color: #b9b9b9;
+  font-style: italic;
+  padding-left: 75px;
+  font-size: 0.98rem;
+}
+
+.time {
+  display: inline-block;
+  font-weight: 800;
+  color: var(--cx-red-bright);
+  min-width: 60px;
+  margin-right: 15px;
+}
+
+/* Overview page day cards */
+.day-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin-top: auto;
+  padding: 20px 0;
+}
+
+.day-card {
+  background: linear-gradient(180deg, var(--cx-red) 0%, var(--cx-red-dark) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.45);
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  cursor: pointer;
+  min-height: 70px;
+}
+
+.day-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.day-card .day-label {
+  color: var(--cx-gold);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.day-card .day-date {
+  color: var(--cx-ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* Back link on individual day pages */
+.back-link {
+  display: inline-block;
+  background: linear-gradient(180deg, var(--cx-red) 0%, var(--cx-red-dark) 100%);
+  color: var(--cx-gold);
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.45);
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.back-link:hover {
+  filter: brightness(1.15);
+  transform: translateX(-5px);
+}
+
+.back-link::before {
+  content: "← ";
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.9rem;
+    letter-spacing: 2px;
+  }
+
+  header h2 {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  header {
+    padding: 14px 15px;
+  }
+
+  .day {
+    padding: 20px;
+  }
+
+  .day h2 {
+    font-size: 1.3rem;
+  }
+
+  .schedule li {
+    font-size: 0.95rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .schedule li.note {
+    padding-left: 0;
+  }
+
+  .time {
+    margin-right: 0;
+  }
+
+  .day-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .day h2 {
+    font-size: 1.2rem;
+  }
+}

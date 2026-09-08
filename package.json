@@ -1,0 +1,24 @@
+{
+  "name": "cx-italia-2026",
+  "version": "1.0.0",
+  "description": "Progressive Web App for CX Italia 2026 - Dolomittene & Venezia",
+  "keywords": [
+    "camel-extreme",
+    "camel-club",
+    "event",
+    "pwa"
+  ],
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0",
+    "vite-plugin-pwa": "^0.19.0"
+  },
+  "packageManager": "pnpm@10.33.0"
+}
