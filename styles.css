@@ -14,21 +14,25 @@
   box-sizing: border-box;
 }
 
+/* Charcoal fill on html so iOS Safari overscroll / rubber-banding
+   never reveals a colored image behind the fixed overlays. */
+html {
+  background-color: var(--cx-charcoal);
+}
+
 body {
   font-family:
     "Arial Narrow", "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   background-color: var(--cx-charcoal);
-  background-image: url("background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   min-height: 100vh;
   color: var(--cx-ink);
   line-height: 1.6;
 }
 
-/* Black & white imagery with a dark, metallic overlay - the Camel Extreme vibe */
+/* Black & white imagery with a dark, metallic overlay - the Camel Extreme vibe.
+   The image lives ONLY on this fixed pseudo-element (never on <body>), and we
+   avoid `background-attachment: fixed` because iOS Safari doesn't honor it and
+   leaves the overlay behind during overscroll. `position: fixed` pins it. */
 body::before {
   content: "";
   position: fixed;
@@ -39,7 +43,6 @@ body::before {
   background-image: url("background.jpg");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   background-repeat: no-repeat;
   filter: grayscale(100%) contrast(1.1);
   z-index: -2;
